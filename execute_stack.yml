@@ -1,4 +1,11 @@
 
 - name: Set the service init script to the desired user/group
-  command: "rake dev:test:helloworld"
-  become: yes
+  hosts: 127.0.0.1
+  connection: local
+  tasks:
+  - name: execute rake
+    shell: |
+        rake dev:test:helloworld
+    register: out
+  
+  - debug: var=out.stdout_lines
