@@ -1,11 +1,12 @@
 
-- name: Set the service init script to the desired user/group
+- name: Sets the host to local
   hosts: 127.0.0.1
   connection: local
   tasks:
-  - name: execute rake
+  - name: Execute Rake Task
     shell: |
-        rake dev:test:helloworld
+        rake {{ item }}
     register: out
+    loop: "{{ rake_cmd }}"
   
   - debug: var=out.stdout_lines
