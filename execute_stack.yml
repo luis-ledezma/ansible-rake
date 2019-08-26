@@ -6,7 +6,8 @@
   - name: Execute Rake Task
     shell: |
         rake {{ item }}
-    register: out
     loop: "{{ rake_cmd }}"
-  
-  - debug: var=out.stdout_lines
+    register: out
+    
+  - debug: "var=out.results.{{item}}.stdout"
+    with_sequence: "0-{{rake_cmd|length - 1}}"
