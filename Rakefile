@@ -3,10 +3,21 @@
 # Environment specific tasks
 namespace :dev do 
     namespace :test do
-        current_env = 'dev'
-        desc "Onboard all backend services to a CI/CD pipeline"
+        desc "Hello World"
         task :helloworld do
             puts "Hello world..."
+        end
+
+        desc "Hello DevOps"
+        task :hellodevops do
+            puts "Hello DevOps..."
+        end
+    end
+
+    namespace :other do
+        desc "Hello World from other namespace"
+        task :helloworld do
+            puts "Hello world from other namespace"
         end
     end
 end
